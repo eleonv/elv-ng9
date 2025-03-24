@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { AppService } from './services/app.service';
@@ -15,9 +15,4 @@ export class AppComponent {
     title = 'elv-ng19';
 
     loading = this.appService.getValueLoading();
-
-    /*constructor() {
-        console.log();
-
-    }*/
 }
