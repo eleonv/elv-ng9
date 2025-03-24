@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, InputSignal, Output } from '@angular/core';
+import { Component, computed, EventEmitter, input, Input, InputSignal, Output } from '@angular/core';
 
 @Component({
     selector: 'app-input',
@@ -7,16 +7,18 @@ import { Component, EventEmitter, Input, InputSignal, Output } from '@angular/co
     styleUrl: './input.component.scss'
 })
 export class InputComponent {
-    @Input() mensajeSS!: string;
-    @Input() mensaje!: InputSignal<string>;
-    @Output() cambioContador = new EventEmitter<string>();
-
-    constructor() {
-        //this.mensaje = new InputSignal<string>();
-    }
+    valor = input.required<number>();
+    //valor = input<number>(0);
+    valorMultiplicado = computed(() => this.valor() * 2);
+    @Output() cambioValor = new EventEmitter<string>();
     
-    cambiarMensajeSS() {
-        this.mensajeSS = "nuevo mensaje SS";
-        this.cambioContador.emit(this.mensajeSS);
+
+    constructor() {}
+    
+
+    bntActualizarValor() {
+        this.cambioValor.emit('Cambio detectado en el componente hijo: ' + this.valor());
     }
+
+    
 }

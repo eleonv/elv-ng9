@@ -6,7 +6,12 @@
 </ul>
 
 <br>
+<!-- <br>
+<app-input [mensaje]="mensajeParaHijo" [mensajeSS]="mensajeSS" (cambioContador)="actualizarContador($event)" [valor]="valorPadre()"></app-input>
 <br>
-<app-input [mensaje]="mensajeParaHijo" [mensajeSS]="mensajeSS" (cambioContador)="actualizarContador($event)"></app-input>
+<button (click)="cambiarMensaje()">Cambiar Mensaje</button> -->
 <br>
-<button (click)="cambiarMensaje()">Cambiar Mensaje</button>
+<button (click)="bntActualizarValor()">Actualizar valor</button>
+<app-input [valor]="valorPadre()" (cambioValor)="onActualizar($event)"></app-input>
+<br>
+<p>Valor actualizdo del hijo: {{ mensajeRecibido }}</p>

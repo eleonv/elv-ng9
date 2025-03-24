@@ -12,18 +12,18 @@ import { InputComponent } from '../input/input.component';
     styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
-    mensajeSS = 'Hola desde el padre abv sin signal';
+    //mensajeSS = 'Hola desde el padre abv sin signal';
+    //mensaje = signal('Hola desde el padre');
+    valorPadre = signal(10);
 
-    mensaje = signal('Hola desde el padre');
-
-
+    mensajeRecibido: string = "";
 
     constructor() {
         //this.mensaje = new InputSignal<string>('Initial message'); // Initialize with an appropriate value
         //@Input({ required: true }) mensaje!: InputSignal<string>;
     }
 
-    get mensajeParaHijo(): any {
+    /*get mensajeParaHijo(): any {
         return this.mensaje.asReadonly();
     }
 
@@ -34,6 +34,17 @@ export class DashboardComponent {
     actualizarContador($event: any) {
         //this.mensajeSS = $event;
         console.log($event);
-        console.log("mensajeSS:", this.mensajeSS);  
+        console.log("mensajeSS:", this.mensajeSS);
+    }*/
+
+    bntActualizarValor() {
+        let nuevoValor = Math.random() * 10;
+        this.valorPadre.set(nuevoValor);
+    }
+
+    onActualizar(mensaje: any) {
+        this.mensajeRecibido = mensaje;
+        console.log("Mensaje actualizado:", this.mensajeRecibido);
+        
     }
 }
