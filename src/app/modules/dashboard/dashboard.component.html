@@ -7,6 +7,6 @@
 
 <br>
 <br>
-<app-input [mensaje]="mensaje"></app-input>
+<app-input [mensaje]="mensajeParaHijo" [mensajeSS]="mensajeSS" (cambioContador)="actualizarContador($event)"></app-input>
 <br>
-<!-- <button (click)="cambiarMensaje()">Cambiar Mensaje</button> -->
+<button (click)="cambiarMensaje()">Cambiar Mensaje</button>

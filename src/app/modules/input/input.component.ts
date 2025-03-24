@@ -1,4 +1,4 @@
-import { Component, Input, InputSignal } from '@angular/core';
+import { Component, EventEmitter, Input, InputSignal, Output } from '@angular/core';
 
 @Component({
     selector: 'app-input',
@@ -7,12 +7,16 @@ import { Component, Input, InputSignal } from '@angular/core';
     styleUrl: './input.component.scss'
 })
 export class InputComponent {
-    @Input() mensaje!: string;
-    //@Input({ required: true }) mensaje!: InputSignal<string>;
-
+    @Input() mensajeSS!: string;
+    @Input() mensaje!: InputSignal<string>;
+    @Output() cambioContador = new EventEmitter<string>();
 
     constructor() {
         //this.mensaje = new InputSignal<string>();
     }
-
+    
+    cambiarMensajeSS() {
+        this.mensajeSS = "nuevo mensaje SS";
+        this.cambioContador.emit(this.mensajeSS);
+    }
 }
